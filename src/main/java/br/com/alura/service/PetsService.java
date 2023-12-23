@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 public class PetsService {
 
+    Scanner scanner = new Scanner(System.in);
+
     private final ClientHttpConfiguration client;
 
     public PetsService(ClientHttpConfiguration client){
@@ -22,7 +24,7 @@ public class PetsService {
 
     public void listartPetsdoAbrigo() throws IOException, InterruptedException {
         System.out.println("Digite o id ou nome do abrigo:");
-        String idOuNome = new Scanner(System.in).nextLine();
+        String idOuNome = scanner.nextLine();
 
         String uri = "http://localhost:8080/abrigos/" +idOuNome +"/pets";
 
@@ -47,12 +49,10 @@ public class PetsService {
             int idade = pet.getIdade();
             System.out.println(id +" - " +tipo +" - " +nome +" - " +raca +" - " +idade +" ano(s)");
         }
-
     }
 
     public void importartPetsdoAbrigo() throws IOException, InterruptedException {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o id ou nome do abrigo:");
         String idOuNome = scanner.nextLine();
 

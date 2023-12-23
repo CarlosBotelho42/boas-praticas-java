@@ -18,9 +18,10 @@ import static org.mockito.Mockito.*;
 public class AbrigoServiceTest {
 
     private ClientHttpConfiguration client = mock(ClientHttpConfiguration.class);
-    private AbrigoService abrigoService = new AbrigoService(client);
 
+    private AbrigoService abrigoService = new AbrigoService(client);
     private PetsService petsService = new PetsService(client);
+
     private HttpResponse<String> response = mock(HttpResponse.class);
     private Abrigo abrigo = new Abrigo("TesteTestando", "61999999999", "abrigo_carlos@gmail.com");
 
@@ -84,6 +85,4 @@ public class AbrigoServiceTest {
         petsService.importartPetsdoAbrigo();
         verify(client.processaPost(anyString(), anyString()), atLeast(1));
     }
-
-
 }

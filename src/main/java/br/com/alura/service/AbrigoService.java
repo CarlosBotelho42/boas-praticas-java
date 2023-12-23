@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class AbrigoService {
 
+    Scanner scanner = new Scanner(System.in);
+
     private final ClientHttpConfiguration clientHttp;
     public AbrigoService(ClientHttpConfiguration clientHttp){
         this.clientHttp = clientHttp;
@@ -43,15 +45,9 @@ public class AbrigoService {
         }
     }
 
-    public void cadastrarAbnrigo() throws IOException, InterruptedException {
-        System.out.println("Digite o nome do abrigo:");
-        String nome = new Scanner(System.in).nextLine();
-        System.out.println("Digite o telefone do abrigo:");
-        String telefone = new Scanner(System.in).nextLine();
-        System.out.println("Digite o email do abrigo:");
-        String email = new Scanner(System.in).nextLine();
+    public void cadastrarAbnrigo(Abrigo abrigo) throws IOException, InterruptedException {
 
-        Abrigo abrigo = new Abrigo(nome, telefone, email);
+        lerDadosCadastro(abrigo);
 
         String uri = "http://localhost:8080/abrigos";
 
@@ -59,6 +55,7 @@ public class AbrigoService {
 
         int statusCode = response.statusCode();
         String responseBody = response.body();
+
         if (statusCode == 200) {
             System.out.println("Abrigo cadastrado com sucesso!");
             System.out.println(responseBody);
@@ -67,5 +64,18 @@ public class AbrigoService {
             System.out.println(responseBody);
         }
 
+    }
+
+    private void lerDadosCadastro(Abrigo abrigo) {
+        System.out.println("Digite o nome do abrigo:");
+        String nome = scanner.nextLine();
+        System.out.println("Digite o telefone do abrigo:");
+        String telefone = scanner.nextLine();
+        System.out.println("Digite o email do abrigo:");
+        String email = scanner.nextLine();
+
+        abrigo.setNome(nome);
+        abrigo.setTelefone(telefone);
+        abrigo.setEmail(email);
     }
 }

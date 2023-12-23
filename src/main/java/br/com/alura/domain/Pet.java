@@ -26,6 +26,10 @@ public class Pet {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -48,6 +52,13 @@ public class Pet {
 
     public Float getPeso() {
         return peso;
+    }
+
+    @Override
+    public String toString() {
+        return """
+                     "id":%s,"tipo":"%s","nome":"%s","raca":"%s,"idade":"%s,"cor":"%s,"peso":"%s"
+                     """.formatted(this.id, this.tipo, this.nome, this.raca, this.idade, this.cor, this.peso);
     }
 
 }
