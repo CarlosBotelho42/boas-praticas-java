@@ -45,7 +45,9 @@ public class AbrigoService {
         }
     }
 
-    public void cadastrarAbnrigo(Abrigo abrigo) throws IOException, InterruptedException {
+    public void cadastrarAbnrigo() throws IOException, InterruptedException {
+
+        Abrigo abrigo = new Abrigo();
 
         lerDadosCadastro(abrigo);
 

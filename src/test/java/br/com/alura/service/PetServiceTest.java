@@ -46,7 +46,7 @@ public class PetServiceTest {
         when(scannerMock.nextLine()).thenReturn("TesteTestando", "61999999999", "abrigo_carlos@gmail.com");
         when(client.processaPost(anyString(), any())).thenReturn(response);
 
-        abrigoService.cadastrarAbnrigo(abrigo);
+        abrigoService.cadastrarAbnrigo();
         verify(client.processaPost(anyString(), anyString()), atLeast(1));
 
         pet.setId(0L);
